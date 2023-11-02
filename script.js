@@ -87,19 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-const logoElement = document.getElementById("clogo");
-
-// Add a click event listener to the logo
-logoElement.addEventListener("click", function (e) {
-    e.preventDefault(); // Prevent the default action of the link
-    const homeLink = document.querySelector('.nav-item a[href="#Home"]');
-
-    // Trigger a click on the "Home" link
-    if (homeLink) {
-        homeLink.click();
-    }
-});
-
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 
