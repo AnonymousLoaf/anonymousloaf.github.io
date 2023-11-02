@@ -29,7 +29,7 @@ document.addEventListener('scroll', function() {
 // This is the scroll function for the links in the header
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll(".navbar a");
-    let isScrolling = false; // Variable to track scrolling
+    let isScrolling = false;
 
     window.addEventListener("scroll", function () {
         if (!isScrolling) {
@@ -44,12 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     const sectionBottom = sectionTop + targetSection.clientHeight;
 
                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        // Remove the "active" class from all links
                         navLinks.forEach((navLink) => {
                             navLink.classList.remove("active");
                         });
 
-                        // Add the "active" class to the current section's link
                         link.classList.add("active");
                     }
                 }
@@ -57,35 +55,49 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Add a click event listener to each link
     navLinks.forEach((link) => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
-
-            // Disable scrolling while handling the click event
             isScrolling = true;
 
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
+            const headerHeight = document.querySelector('.site-header').offsetHeight;
 
             if (targetElement) {
-                targetElement.scrollIntoView({ behavior: "smooth" });
+                let targetPosition = targetElement.offsetTop - headerHeight;
 
-                // Remove the "active" class from all links
+                if (targetId === "Home") {
+                    targetPosition = 0;
+                }
+
+                window.scrollTo({ top: targetPosition, behavior: "smooth" });
+
                 navLinks.forEach((navLink) => {
                     navLink.classList.remove("active");
                 });
 
-                // Add the "active" class to the clicked link
                 this.classList.add("active");
 
-                // Re-enable scrolling after a short delay (adjust as needed)
                 setTimeout(function () {
                     isScrolling = false;
-                }, 800); // 500 milliseconds, adjust as needed
+                }, 800);
             }
         });
     });
+});
+
+const logoElement = document.getElementById("clogo");
+
+// Add a click event listener to the logo
+logoElement.addEventListener("click", function (e) {
+    e.preventDefault(); // Prevent the default action of the link
+    const homeLink = document.querySelector('.nav-item a[href="#Home"]');
+
+    // Trigger a click on the "Home" link
+    if (homeLink) {
+        homeLink.click();
+    }
 });
 
 const hamburger = document.querySelector(".hamburger");
@@ -107,6 +119,7 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
+// Audio boxes functionality to only allow one audio file to play at a time
 document.addEventListener("DOMContentLoaded", function () {
     const audioBoxes = document.querySelectorAll(".audio-item");
     let activeAudioElement = null; // Track the active audio element

@@ -18,30 +18,21 @@ li {
 a {
     text-decoration: none;
 }
+h1 {
+    font-size: 1000%;
+    color: white;
+    text-align: left;
+}
 
 body {
     margin: 0;
     padding: 0;
     background-color: #151e27;
     font-family: Arial, sans-serif;
-    scroll-behavior: smooth; /* Enable smooth scrolling */
+    scroll-behavior: smooth;
+    padding-top: 60px;
 }
 
-/*
-.site-header {
-    background-color: white;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s;
-}*/
-
 .site-header {
     background-color: white;
     text-align: center;
@@ -51,7 +42,6 @@ body {
     width: 100%;
     z-index: 999;
     transition: background-color 0.3s;
-    border-bottom: 1px solid #E2E8F0;
 }
 
 .navbar {
@@ -109,10 +99,9 @@ body {
     color: #fff;
 }
 
-.site-nav a:hover {
+.nav-item a:hover {
     border: 2px solid #00aae8;
     border-radius: 5px;
-    padding: 5px 10px;
 }
 
 .nav-item a.active {
@@ -121,11 +110,9 @@ body {
     border-radius: 5px;
     padding: 5px 10px;
 }
-*/
 
 .gallery {
     text-align: center;
-    padding-top: 500px;
 }
 
 .gallery img {
@@ -226,7 +213,7 @@ body {
     margin-right: 30px;
 }
 
-#logo {
+#blogo, #clogo {
     max-width: 180px;
 }
 
