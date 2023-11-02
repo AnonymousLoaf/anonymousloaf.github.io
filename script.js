@@ -26,25 +26,6 @@ document.addEventListener('scroll', function() {
         }
 });
 
-// This is for the audio links on the four boxes
-document.addEventListener("DOMContentLoaded", function () {
-    const audioBoxes = document.querySelectorAll(".audio-item");
-
-    audioBoxes.forEach((box) => {
-        const audioId = box.getAttribute("data-audio");
-        const audioElement = new Audio(audioId);
-
-        box.addEventListener("click", function () {
-            if (audioElement.paused) {
-                audioElement.play();
-            } else {
-                audioElement.pause();
-                //audioElement.currentTime = 0;
-            }
-        });
-    });
-});
-
 // This is the scroll function for the links in the header
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll(".navbar a");
@@ -117,7 +98,7 @@ function mobileMenu() {
     navMenu.classList.toggle("active");
 }
 
-const navLink = document.querySelectorAll(".nav-link");
+const navLink = document.querySelectorAll(".nav-item");
 
 navLink.forEach(n => n.addEventListener("click", closeMenu));
 
@@ -125,3 +106,42 @@ function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const audioBoxes = document.querySelectorAll(".audio-item");
+    let activeAudioElement = null; // Track the active audio element
+
+    audioBoxes.forEach((box) => {
+        const audioId = box.getAttribute("data-audio");
+        const audioElement = new Audio(audioId);
+
+        box.addEventListener("click", function () {
+            if (audioElement === activeAudioElement) {
+                // If the same audio item is clicked again, toggle play/pause
+                if (audioElement.paused) {
+                    audioElement.play();
+                    activeAudioElement = audioElement;
+                    box.classList.add("active-audio");
+                } else { 
+                    // Pause the audio and remove the active class
+                    audioElement.pause();
+                    activeAudioElement = null;
+                    box.classList.remove("active-audio");
+                }
+            } else {
+                // Pause the currently playing audio (if any) and remove the active class
+                if (activeAudioElement !== null) {
+                    activeAudioElement.pause();
+                    // TODO: Remove the active class from the box that was previously active
+                    const activeBox = document.querySelector(".active-audio");
+                    activeBox.classList.remove("active-audio");
+                }
+
+                // Play the clicked audio element
+                audioElement.play();
+                box.classList.add("active-audio");
+                activeAudioElement = audioElement;
+            }
+        });
+    });
+});
