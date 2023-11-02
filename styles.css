@@ -214,7 +214,7 @@ body {
 }
 
 #blogo, #clogo {
-    max-width: 80px;
+    max-width: 180px;
 }
 
 @media only screen and (max-width: 842px) {
