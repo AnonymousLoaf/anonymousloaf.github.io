@@ -217,6 +217,11 @@ body {
     max-width: 240px;
 }
 
+#first_of_sec {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
 @media only screen and (max-width: 842px) {
     .slide .video-container {
         height: auto;
