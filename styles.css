@@ -218,6 +218,21 @@ body {
 }
 
 @media only screen and (max-width: 842px) {
+    .slide .video-container {
+        height: auto;
+    }
+    .slide .double-slide {
+        height: auto;
+        flex-direction: column;
+    }
+    
+    .slide iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 945px) {
     .nav-menu {
         position: fixed;
         right: -100%;
