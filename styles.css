@@ -19,7 +19,7 @@ a {
     text-decoration: none;
 }
 h1 {
-    font-size: 900%;
+    font-size: 6vw;
     color: white;
     text-align: left;
     border: 8px solid #00aae8;
@@ -152,7 +152,7 @@ body {
 
 .slide .video-container {
     max-width: 1280px;
-    margin: 0 auto;
+    max-height: 428px;
     width: 100%;
     height: 80vh;
 }
@@ -162,7 +162,7 @@ body {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 80vh;
+    margin-bottom: 15px;
 }
 
 .audio-row {
@@ -185,8 +185,13 @@ body {
     border-radius: 2px;
 }
 
+#Auto-Cx .audio-item {
+    border: 4px solid white;
+    border-radius: 50%;
+}
+
 #Auto-Cx .active-audio {
-    border: 2px solid #00aae8;
+    border: 4px solid #00aae8;
     border-radius: 50%;
 }
 
@@ -270,7 +275,7 @@ body {
     }
 }
 
-@media only screen and (max-width: 945px) {
+@media only screen and (max-width: 1030px) {
     .nav-menu {
         position: fixed;
         right: -100%;

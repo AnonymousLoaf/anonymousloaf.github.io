@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!isScrolling) {
             const scrollPosition = window.scrollY;
 
-            allNavLinks.forEach((link) => {
+            navLinks.forEach((link) => {
                 const targetId = link.getAttribute("href").substring(1);
                 const targetSection = document.getElementById(targetId);
 
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const sectionBottom = sectionTop + targetSection.clientHeight;
 
                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        allNavLinks.forEach((navLink) => {
+                        navLinks.forEach((navLink) => {
                             navLink.classList.remove("active");
                         });
 
@@ -86,9 +86,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 });
 
+                this.classList.add("active");
+
                 setTimeout(function () {
                     isScrolling = false;
                 }, 800);
+
+                
             }
         });
     });
