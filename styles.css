@@ -18,6 +18,18 @@ li {
 a {
     text-decoration: none;
 }
+p {
+    font-size: 1.6vw;
+    line-height: 1.5;
+    max-width: 1280px;
+    width: 100%;
+    color: white;
+    text-align: right;
+    border-bottom: 2px solid transparent;
+}
+p:hover {
+    border-bottom: 2px solid #00aae8;
+}
 h1 {
     font-size: 4vw;
     font-weight: 10;
@@ -300,6 +312,9 @@ body {
         text-align: left;
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+    h1 {
+        font-weight: bolder;
     }
 }
 
