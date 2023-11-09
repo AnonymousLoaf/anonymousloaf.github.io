@@ -29,13 +29,15 @@ document.addEventListener('scroll', function() {
 // This is the scroll function for the links in the header
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll(".navbar a");
+    const crumbLinks = document.querySelectorAll(".breadcrumb_boxes a");
+    const allNavLinks = [...navLinks, ...crumbLinks];
     let isScrolling = false;
 
     window.addEventListener("scroll", function () {
         if (!isScrolling) {
             const scrollPosition = window.scrollY;
 
-            navLinks.forEach((link) => {
+            allNavLinks.forEach((link) => {
                 const targetId = link.getAttribute("href").substring(1);
                 const targetSection = document.getElementById(targetId);
 
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const sectionBottom = sectionTop + targetSection.clientHeight;
 
                     if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                        navLinks.forEach((navLink) => {
+                        allNavLinks.forEach((navLink) => {
                             navLink.classList.remove("active");
                         });
 
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    navLinks.forEach((link) => {
+    allNavLinks.forEach((link) => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             isScrolling = true;
@@ -73,11 +75,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 window.scrollTo({ top: targetPosition, behavior: "smooth" });
 
-                navLinks.forEach((navLink) => {
+                allNavLinks.forEach((navLink) => {
                     navLink.classList.remove("active");
                 });
 
-                this.classList.add("active");
+                var selected = this.getAttribute("href");
+                navLinks.forEach((link) => {
+                    if (link.getAttribute("href") === selected) {
+                        link.classList.add("active");
+                    }
+                });
 
                 setTimeout(function () {
                     isScrolling = false;
