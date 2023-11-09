@@ -182,7 +182,6 @@ body {
 
 .audio-item {
     display: flex;
-    margin-right: 5vb;
 }
 
 @keyframes blink {
@@ -195,7 +194,7 @@ body {
 }
 
 #Protocall-Solution .audio-item img {
-    width: auto;
+    width: 100%;
     height: 100%;
     cursor: pointer;
     border: 6px solid transparent;
@@ -215,6 +214,7 @@ body {
 #Auto-Cx .audio-item {
     border: 4px solid white;
     border-radius: 50%;
+    margin: 0 20px 0 20px;
 }
 
 #Auto-Cx .active-audio {
