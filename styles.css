@@ -19,9 +19,13 @@ a {
     text-decoration: none;
 }
 h1 {
-    font-size: 1000%;
+    font-size: 900%;
     color: white;
     text-align: left;
+    border: 8px solid #00aae8;
+    background-color: #00aae8;
+    border-radius: 10px;
+    margin: 2% 0 2% 0;
 }
 
 body {
@@ -127,7 +131,7 @@ body {
 }
 
 .gallery {
-    text-align: center;
+    text-align: left;
 }
 
 .gallery img {
