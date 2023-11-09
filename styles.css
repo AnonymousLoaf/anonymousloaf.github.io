@@ -148,6 +148,7 @@ body {
     flex-direction: column;
     margin-bottom: 0;
     position: relative;
+    margin-bottom: 15px;
 }
 
 .slide .video-container {
