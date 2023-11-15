@@ -29,6 +29,8 @@ document.addEventListener('scroll', function() {
 // This is the scroll function for the links in the header
 document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll(".navbar a");
+    const crumbLinks = document.querySelectorAll(".breadcrumb_boxes a");
+    const allNavLinks = [...navLinks, ...crumbLinks];
     let isScrolling = false;
 
     window.addEventListener("scroll", function () {
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    navLinks.forEach((link) => {
+    allNavLinks.forEach((link) => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             isScrolling = true;
@@ -73,8 +75,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 window.scrollTo({ top: targetPosition, behavior: "smooth" });
 
-                navLinks.forEach((navLink) => {
+                allNavLinks.forEach((navLink) => {
                     navLink.classList.remove("active");
+                });
+
+                var selected = this.getAttribute("href");
+                navLinks.forEach((link) => {
+                    if (link.getAttribute("href") === selected) {
+                        link.classList.add("active");
+                    }
                 });
 
                 this.classList.add("active");
@@ -82,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 setTimeout(function () {
                     isScrolling = false;
                 }, 800);
+
+                
             }
         });
     });
